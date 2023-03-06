@@ -1,13 +1,13 @@
-confluent_cloud_environment_to_use = "env-5k6qn"
-confluent_cloud_api_key            = "PSYJIC4J7BS27E5P"
-confluent_cloud_api_secret         = "Og428TzSaYR9bEWzI9DMZxFaLqwsaPBK54z/DstXalGzfFFtL35Stmolh3KatdhG"
-owner                              = "Amith K Manjunath "
-owner_email                        = "ammanjunath@confluent.io"
-environment_name                   = "Demo-NBCU-Amith"
-purpose                            = "Amith NBCU Testing "
-aws_account_id                     = "492737776546"
-ssh_key_name                       = "amith-r1-tf-key"
-ssh_public_key_path                = "~/.ssh/amith-aws-east1.pub"
+confluent_cloud_environment_to_use = "<CCLOUD_ENVIRONMET_FOR_KAFKA_CLUSTERS"
+confluent_cloud_api_key            = "<CCLOUD_API_KEY>"
+confluent_cloud_api_secret         = "<CCLOUD_API_SECRET>"
+owner                              = "<NAME>"
+owner_email                        = "<EMAIL>"
+environment_name                   = "<ENV_NAME>"
+purpose                            = "<PURPOSE>"
+aws_account_id                     = "<AWS-ACCT-ID>"
+ssh_key_name                       = "<SOMETHING>-key"
+ssh_public_key_path                = "~/.ssh/<SOMETHING>.pub"
 
 components-r1 = {
 
