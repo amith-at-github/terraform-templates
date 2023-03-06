@@ -1,0 +1,79 @@
+# Default DNS resolution (us-west-2)
+export BOOTSTRAP=lkc-m8npmw.domqwxll4wl.us-west-2.aws.confluent.cloud
+https://lkc-m8npmw.domqwxll4wl.us-west-2.aws.confluent.cloud:443
+
+# Private DNS resolution (us-east-)
+
+export BOOTSTRAP=lkc-8w7yrq.domdpoloqpy.us-east-1.aws.confluent.cloud
+
+https://lkc-8w7yrq.domdpoloqpy.us-east-1.aws.confluent.cloud:443
+openssl s_client -connect $BOOTSTRAP:9092 -servername $BOOTSTRAP -verify_hostname $BOOTSTRAP </dev/null 2>/dev/null | grep -E 'Verify return code|BEGIN CERTIFICATE' | xargs
+
+openssl s_client -connect $BOOTSTRAP:9092 </dev/null
+
+
+## Important notes
+1) DNS private hosted zones make sure both the VPC are added in the private hosted zones
+2) Make sure private subnets are listed on the route tables , VPc peering is between private subnets
+
+## commands
+# for bastion hosts 
+ssh-add ~/.ssh/<Path to key>.pem
+ssh-add -L 
+ssh -A ec2-user@public-ip-address-to-jumbox-bastion
+
+#once inside jumpbox
+ssh -A ec2-user@private-ip-address ( same region or cross region)
+
+
+terraform plan -target="module.aws-network-vpc-r1" -target="module.aws-network-vpc-r2"
+terraform apply -target="module.aws-network-vpc-r1" -target="module.aws-network-vpc-r2"
+
+Bastion command notes:
+ssh -v -A publicdns/ip
+Once inside
+ssh privateIp/dns ( it should work)
+
+
+
+
+Terraform:
+
+
+terraform init -var-file="amithdemo.cp.full.aws.cacentral.tfvars"
+terraform plan -var-file="amithdemo.cp.full.aws.cacentral.tfvars"
+terraform apply -var-file="amithdemo.cp.full.aws.cacentral.tfvars"
+terraform destroy -var-file="amithdemo.cp.full.aws.cacentral.tfvars"
+terraform output > run-results.txt
+Terraform commands: ( other) 
+terraform state list 
+terraform state show aws_key_pair.platform
+
+terraform destroy -target RESOURCE_TYPE.NAME
+terraform destroy -target RESOURCE_TYPE.NAME -target RESOURCE_TYPE2.NAME
+
+# Remove a Resource
+$ terraform state rm module.foo.packet_device.worker[0]
+
+# Remove a Module
+$ terraform state rm module.foo
+
+example:
+terraform state show aws_key_pair.platform
+terraform state rm  aws_instance.component["kafka-0"]
+terraform destroy -target aws_instance -target component["schemaregistry-0"]
+
+https://github.com/ebarros29/terraform-diagrams
+pip install --no-cache-dir -r requirements.txt
+python3 diagrams_aws.py
+
+
+terraform graph | dot -Tsvg > graph.svg 
+
+
+# terraform graph
+brew install inframap
+#https://github.com/cycloidio/inframap
+
+inframap generate state.tfstate | dot -Tpng > graph.png
+inframap generate state.tfstate | graph-easy
