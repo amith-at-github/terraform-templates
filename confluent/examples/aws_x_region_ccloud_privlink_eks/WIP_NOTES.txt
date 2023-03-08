@@ -1,12 +1,12 @@
 # Default DNS resolution (us-west-2)
-export BOOTSTRAP=lkc-m8npmw.domqwxll4wl.us-west-2.aws.confluent.cloud
-https://lkc-m8npmw.domqwxll4wl.us-west-2.aws.confluent.cloud:443
+export BOOTSTRAP=lkc-oq77vj.dom8w13j4p7.us-west-2.aws.confluent.cloud
+https://lkc-oq77vj.dom8w13j4p7.us-west-2.aws.confluent.cloud:443
 
 # Private DNS resolution (us-east-)
 
-export BOOTSTRAP=lkc-8w7yrq.domdpoloqpy.us-east-1.aws.confluent.cloud
+export BOOTSTRAP=lkc-zgzzxz.dom4g2q9ngr.us-east-1.aws.confluent.cloud
 
-https://lkc-8w7yrq.domdpoloqpy.us-east-1.aws.confluent.cloud:443
+https://lkc-zgzzxz.dom4g2q9ngr.us-east-1.aws.confluent.cloud:443
 openssl s_client -connect $BOOTSTRAP:9092 -servername $BOOTSTRAP -verify_hostname $BOOTSTRAP </dev/null 2>/dev/null | grep -E 'Verify return code|BEGIN CERTIFICATE' | xargs
 
 openssl s_client -connect $BOOTSTRAP:9092 </dev/null
@@ -77,3 +77,11 @@ brew install inframap
 
 inframap generate state.tfstate | dot -Tpng > graph.png
 inframap generate state.tfstate | graph-easy
+
+
+export EKS_K8_CLUSTER_NAME=
+export AWS_ARN_ACCT_IAM=arn:aws:iam::XXXXXX:role/XXXXROLE
+
+aws eks update-kubeconfig --region us-east-1 --name  $EKS_K8_CLUSTER_NAME
+
+eksctl create iamidentitymapping --cluster $EKS_K8_CLUSTER_NAME --arn $AWS_ARN_ACCT_IAM --username admin --group system:masters

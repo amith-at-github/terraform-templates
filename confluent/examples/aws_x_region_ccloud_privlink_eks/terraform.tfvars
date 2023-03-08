@@ -1,13 +1,14 @@
-confluent_cloud_environment_to_use = "<CCLOUD_ENVIRONMET_FOR_KAFKA_CLUSTERS"
-confluent_cloud_api_key            = "<CCLOUD_API_KEY>"
-confluent_cloud_api_secret         = "<CCLOUD_API_SECRET>"
-owner                              = "<NAME>"
-owner_email                        = "<EMAIL>"
-environment_name                   = "<ENV_NAME>"
-purpose                            = "<PURPOSE>"
-aws_account_id                     = "<AWS-ACCT-ID>"
-ssh_key_name                       = "<SOMETHING>-key"
-ssh_public_key_path                = "~/.ssh/<SOMETHING>.pub"
+# confluent_cloud_environment_to_use = "<CCLOUD_ENVIRONMET_FOR_KAFKA_CLUSTERS>-<SCENARIO-WHERE-NEW-ENV_CANNOT_BE_CREATED>"
+# confluent_cloud_api_key            = "<CCLOUD_API_KEY>"
+# confluent_cloud_api_secret         = "<CCLOUD_API_SECRET>"
+# owner                              = "<NAME>"
+# owner_email                        = "<EMAIL>"
+# environment_name                   = "<ENV_NAME>-<USED-BY-RESOURCES-AND-TAGS-FOR-DESCRIPTION""
+# purpose                            = "<PURPOSE>"
+# aws_account_id                     = "<AWS-ACCT-ID>-<ON-RIGHT-TOP-OF-AWS_LOGIN>"
+# ssh_key_name                       = "<SOMETHING>-key-<JUST-A-NAME>"
+# ssh_public_key_path                = "~/.ssh/<SOMETHING>.pub"
+
 
 components_both_regions = {
 

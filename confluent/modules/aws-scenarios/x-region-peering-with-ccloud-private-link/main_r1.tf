@@ -23,7 +23,7 @@ module "aws_computer_storage_r1" {
   ssh_key_name        = var.ssh_key_name
   ssh_public_key_path = var.ssh_public_key_path
 
-  component = var.components_r2
+  component = var.components_r1
 
 
   providers = {
