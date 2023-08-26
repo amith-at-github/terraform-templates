@@ -28,6 +28,34 @@ data "aws_ami" "rhel_8" {
   name_regex = "^RHEL-8.*x86_64.*"
 }
 
+data "aws_ami" "rhel_7" {
+  most_recent = true
+  owners = ["309956199498"] # Red Hat
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  name_regex = "^RHEL-7.*x86_64.*"
+  # filter {
+  #   name   = "name"
+  #   values = ["RHEL-7*GA*Hourly*"]
+  # }
+
+  # filter {
+  #   name   = "architecture"
+  #   values = ["x86_64"]
+  # }
+
+  # filter {
+  #   name   = "state"
+  #   values = ["available"]
+  # }
+
+  
+}
+
 # locals {
 #   ec2_ami_id = var.ec2_ami_type == "rhel" ? data.aws_ami.rhel_8.id : data.aws_ami.ubuntu_18.id
 #   # TODO ec2_ami_id = data.aws_ami.amazon_linux_2.id
@@ -55,7 +83,7 @@ locals {
 
 resource "aws_instance" "component" {
   # ami = "${local.ec2_ami_id}"
-  ami = var.ec2_ami_type == "rhel" ? data.aws_ami.rhel_8.id : data.aws_ami.ubuntu_18.id
+  ami = var.ec2_ami_type == "rhel" ? data.aws_ami.rhel_7.id : data.aws_ami.ubuntu_18.id
 
   # count = var.ec2_instance_count
   for_each = local.service_instances_map
