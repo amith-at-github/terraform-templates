@@ -16,6 +16,23 @@ data "aws_ami" "ubuntu_18" {
   name_regex = "^ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-.*"
 }
 
+data "aws_ami" "ubuntu_20" {
+
+    most_recent = true
+
+    filter {
+        name   = "name"
+        values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    }
+
+    filter {
+        name = "virtualization-type"
+        values = ["hvm"]
+    }
+
+    owners = ["099720109477"]
+}
+
 data "aws_ami" "rhel_8" {
   most_recent = true
   owners      = ["309956199498"]
@@ -83,7 +100,7 @@ locals {
 
 resource "aws_instance" "component" {
   # ami = "${local.ec2_ami_id}"
-  ami = var.ec2_ami_type == "rhel" ? data.aws_ami.rhel_7.id : data.aws_ami.ubuntu_18.id
+  ami = var.ec2_ami_type == "rhel" ? data.aws_ami.rhel_7.id : data.aws_ami.ubuntu_20.id
 
   # count = var.ec2_instance_count
   for_each = local.service_instances_map

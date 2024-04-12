@@ -35,8 +35,8 @@ variable "aws_ipv4_cidr" {
 variable "ec2_ami_type" {
   description = "The type of AMI to run on EC2 Instances (ubuntu, rhel)"
   type        = string
-  #default     = "ubuntu"
-  default = "rhel"
+  default     = "ubuntu"
+  #default = "rhel"
 }
 
 variable "ssh_key_name" {
