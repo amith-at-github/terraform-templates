@@ -7,17 +7,20 @@
 
 owner                              = "Amith"
 owner_email                        = "ammanjunath@confleunt.io"
-environment_name                   = "citi-demo-mrc"
+environment_name                   = "cp-ansible-demo-mrc"
 purpose                            = "ps-enagement"
 ssh_key_name                       = "amith-aws-demo-key-ssh"
 ssh_public_key_path                = "~/.ssh/amith-aws-east1.pub"
 aws_region_details_r1 = {
-  region      = "us-east-1"
+  
   cidr        = "10.19.0.0/16"
+  #region      = "us-east-1"
   # zones       = ["use1-az1", "use1-az2", "use1-az5"]
   # zones_names = ["us-east-1a", "us-east-1b", "us-east-1f"]
-  zones       = ["use1-az1", "use1-az2"]
-  zones_names = ["us-east-1a", "us-east-1b"]
+
+  region      = "eu-north-1"
+  zones       = ["eun1-az1", "eun1-az2","eun1-az3"]
+  zones_names = ["eu-north-1a", "eu-north-1b","eu-north-1c"]
 }
 
 cp_components = {

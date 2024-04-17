@@ -25,7 +25,8 @@ resource "aws_security_group" "public_bastion_sgs" {
     from_port   = "-1"
     to_port     = "-1"
     protocol    = "icmp"
-    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
+    cidr_blocks = ["${chomp(data.http.myip.response_body)}/32"]
+   # cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
     # cidr_blocks = ["0.0.0.0/0"]
     # cidr_blocks = ["${var.aws_ipv4_cidr}"]
   }
@@ -35,7 +36,8 @@ resource "aws_security_group" "public_bastion_sgs" {
     from_port   = "0"
     to_port     = "65535"
     protocol    = "tcp"
-    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
+    cidr_blocks = ["${chomp(data.http.myip.response_body)}/32"]
+   # cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
     # cidr_blocks = ["0.0.0.0/0"]
     # cidr_blocks = ["${var.aws_ipv4_cidr}"]
   }

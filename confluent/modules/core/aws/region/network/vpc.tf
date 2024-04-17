@@ -53,7 +53,8 @@ resource "aws_route_table_association" "route" {
 # Elastic IP for NAT gateway
 # EIP has error revisit later
 resource "aws_eip" "nat" {
-  vpc        = true
+  # vpc        = true
+  domain   = "vpc"
   depends_on = [aws_internet_gateway.myInternetGateway]
   tags = {
     Name = "Amith-eip-nat"
