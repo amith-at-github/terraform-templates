@@ -1,0 +1,25 @@
+---
+
+all:
+  vars:
+    ansible_connection: ssh
+    ansible_ssh_user: azadminuser
+    ansible_become: true    
+    ansible_ssh_private_key_file:  ${ssh_key_file}
+    ansible_ssh_bastion_host : ec2-3-238-66-180.compute-1.amazonaws.com
+    ansible_ssh_extra_args: -o StrictHostKeyChecking=no
+    ansible_ssh_common_args: '-o ProxyCommand="ssh -i {{ ansible_ssh_private_key_file }} -W %h:%p -q {{ ansible_ssh_user }}@{{ ansible_ssh_bastion_host }} "'
+ 
+
+%{ for svc_name, svc in components ~}
+${svc_name}:
+   hosts:
+%{ for i in range(0, svc.instance_count)   ~}
+  %{ if svc.subnet_type_public }
+      "${vms["${svc_name}-${i}"].public_ip_address}": 
+   %{ else }
+      "${vms["${svc_name}-${i}"].private_ip_address}": 
+  %{ endif }
+       
+%{ endfor ~}
+%{ endfor ~}

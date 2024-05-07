@@ -1,0 +1,54 @@
+---
+
+all:
+  vars:
+    ansible_connection: ssh
+    ansible_ssh_user: azadminuser
+    ansible_become: true    
+    ansible_ssh_private_key_file:  ~/.ssh/amith-azure.pub
+    ansible_ssh_extra_args: -o StrictHostKeyChecking=no
+    # if using public ip below two lines can be commented
+    ansible_ssh_bastion_host : ec2-3-238-66-180.compute-1.amazonaws.com
+    ansible_ssh_common_args: '-o ProxyCommand="ssh -i {{ ansible_ssh_private_key_file }} -W %h:%p -q {{ ansible_ssh_user }}@{{ ansible_ssh_bastion_host }} "'
+ 
+
+control_center:
+   hosts:
+  
+      "13.92.215.13": 
+   
+       
+jumpbox:
+   hosts:
+  
+      "13.92.141.47": 
+   
+       
+kafka_broker:
+   hosts:
+  
+      "40.117.208.15": 
+   
+       
+  
+      "40.117.211.49": 
+   
+       
+  
+      "40.117.210.205": 
+   
+       
+zookeeper:
+   hosts:
+  
+      "40.121.22.243": 
+   
+       
+  
+      "40.117.215.158": 
+   
+       
+  
+      "40.121.22.254": 
+   
+       
