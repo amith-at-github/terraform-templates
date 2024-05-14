@@ -12,7 +12,7 @@ variable "resource_group_name_prefix" {
 
 variable "component_ssh_key_file_path" {
   type        = string
-  default     = "~/.ssh/amith-azure.pub"
+  default     = "~/.ssh/amith-azure"
   description = "Path where ssh key file is stored in local tf environment"
 }
 
