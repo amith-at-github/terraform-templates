@@ -1,0 +1,167 @@
+created_aws_private_route_table_r1 = "rtb-0d4c767d7bac2a12c"
+created_aws_private_route_table_r2 = "rtb-085f2720f5c01f3c9"
+created_aws_private_subnets_r1 = [
+  "subnet-0f0825d8984e1018f",
+  "subnet-04fe4045bb4167da1",
+  "subnet-009bc4c46888de0cf",
+]
+created_aws_private_subnets_r2 = [
+  "subnet-0889d7efe5888d443",
+  "subnet-04d00f96e34f1ca9d",
+  "subnet-0f9cf8c95d5954a19",
+]
+created_aws_public_route_table_r1 = "rtb-0a400f9d181a1492a"
+created_aws_public_route_table_r2 = "rtb-0baefd9de0a73ebdf"
+created_aws_public_subnets_r1 = [
+  "subnet-088daeccb9609db60",
+  "subnet-0cb029995a60fa4ec",
+  "subnet-042aab3752240119f",
+]
+created_aws_public_subnets_r2 = [
+  "subnet-08d06fe21dd3a1745",
+  "subnet-0c60906be66495c53",
+  "subnet-0785b3e99da99433b",
+]
+created_aws_vpc_id_r1 = "vpc-025f5a5566863c141"
+created_aws_vpc_id_r2 = "vpc-0ca0f9132b59fd9c3"
+created_subnet_instance_details_r1 = {
+  "use1-az2" = [
+    {
+      "subnect_cidr_block" = "10.101.0.0/24"
+      "subnet_az" = "us-east-1a"
+      "subnet_az_id" = "use1-az2"
+      "subnet_id" = "subnet-088daeccb9609db60"
+      "subnet_type" = "public"
+    },
+    {
+      "subnect_cidr_block" = "10.101.3.0/24"
+      "subnet_az" = "us-east-1a"
+      "subnet_az_id" = "use1-az2"
+      "subnet_id" = "subnet-0f0825d8984e1018f"
+      "subnet_type" = "private"
+    },
+  ]
+  "use1-az4" = [
+    {
+      "subnect_cidr_block" = "10.101.4.0/24"
+      "subnet_az" = "us-east-1b"
+      "subnet_az_id" = "use1-az4"
+      "subnet_id" = "subnet-04fe4045bb4167da1"
+      "subnet_type" = "private"
+    },
+    {
+      "subnect_cidr_block" = "10.101.1.0/24"
+      "subnet_az" = "us-east-1b"
+      "subnet_az_id" = "use1-az4"
+      "subnet_id" = "subnet-0cb029995a60fa4ec"
+      "subnet_type" = "public"
+    },
+  ]
+  "use1-az6" = [
+    {
+      "subnect_cidr_block" = "10.101.5.0/24"
+      "subnet_az" = "us-east-1c"
+      "subnet_az_id" = "use1-az6"
+      "subnet_id" = "subnet-009bc4c46888de0cf"
+      "subnet_type" = "private"
+    },
+    {
+      "subnect_cidr_block" = "10.101.2.0/24"
+      "subnet_az" = "us-east-1c"
+      "subnet_az_id" = "use1-az6"
+      "subnet_id" = "subnet-042aab3752240119f"
+      "subnet_type" = "public"
+    },
+  ]
+}
+created_subnet_instance_details_r2 = {
+  "use2-az1" = [
+    {
+      "subnect_cidr_block" = "10.201.3.0/24"
+      "subnet_az" = "us-east-2a"
+      "subnet_az_id" = "use2-az1"
+      "subnet_id" = "subnet-0889d7efe5888d443"
+      "subnet_type" = "private"
+    },
+    {
+      "subnect_cidr_block" = "10.201.0.0/24"
+      "subnet_az" = "us-east-2a"
+      "subnet_az_id" = "use2-az1"
+      "subnet_id" = "subnet-08d06fe21dd3a1745"
+      "subnet_type" = "public"
+    },
+  ]
+  "use2-az2" = [
+    {
+      "subnect_cidr_block" = "10.201.4.0/24"
+      "subnet_az" = "us-east-2b"
+      "subnet_az_id" = "use2-az2"
+      "subnet_id" = "subnet-04d00f96e34f1ca9d"
+      "subnet_type" = "private"
+    },
+    {
+      "subnect_cidr_block" = "10.201.1.0/24"
+      "subnet_az" = "us-east-2b"
+      "subnet_az_id" = "use2-az2"
+      "subnet_id" = "subnet-0c60906be66495c53"
+      "subnet_type" = "public"
+    },
+  ]
+  "use2-az3" = [
+    {
+      "subnect_cidr_block" = "10.201.2.0/24"
+      "subnet_az" = "us-east-2c"
+      "subnet_az_id" = "use2-az3"
+      "subnet_id" = "subnet-0785b3e99da99433b"
+      "subnet_type" = "public"
+    },
+    {
+      "subnect_cidr_block" = "10.201.5.0/24"
+      "subnet_az" = "us-east-2c"
+      "subnet_az_id" = "use2-az3"
+      "subnet_id" = "subnet-0f9cf8c95d5954a19"
+      "subnet_type" = "private"
+    },
+  ]
+}
+ec2_instance_details_r1 = {
+  "jumpbox-0" = {
+    "associated-az" = "us-east-1a"
+    "private_dns" = "ip-10-101-0-83.ec2.internal"
+    "public_dns" = "ec2-13-219-102-72.compute-1.amazonaws.com"
+  }
+}
+ec2_instance_details_r2 = {
+  "jumpbox-0" = {
+    "associated-az" = "us-east-2a"
+    "private_dns" = "ip-10-201-0-203.us-east-2.compute.internal"
+    "public_dns" = "ec2-18-226-172-161.us-east-2.compute.amazonaws.com"
+  }
+}
+tgw_attachment_r1_id = "tgw-attach-07c5cf7c6b8ffb0c9"
+tgw_attachment_r2_id = "tgw-attach-0deac57209e5bac85"
+tgw_peering_attachment_id = "tgw-attach-0a254fcad3de13301"
+tgw_peering_attachment_state = {
+  "id" = "tgw-attach-0a254fcad3de13301"
+  "peer_account_id" = "829250931565"
+  "peer_region" = "us-east-1"
+  "peer_transit_gateway_id" = "tgw-0f7a7d54dd1ad5f6b"
+  "tags" = tomap({
+    "Name" = "tgw-peer-r2-accepted-from-r1"
+  })
+  "tags_all" = tomap({
+    "Environment" = "cp-fidelity-poc-x-region-tgw-clusterlink"
+    "Name" = "tgw-peer-r2-accepted-from-r1"
+    "Owner" = "Amith"
+    "owner_email" = "ammanjunath@confleunt.io"
+    "purpose" = "poc"
+    "tf_last_modified" = "1"
+    "tf_owner" = "Amith"
+    "tf_owner_contact" = "Amith"
+    "tf_workspace" = "default"
+  })
+  "transit_gateway_attachment_id" = "tgw-attach-0a254fcad3de13301"
+  "transit_gateway_id" = "tgw-0f73085c984b6c176"
+}
+tgw_r1_id = "tgw-0f7a7d54dd1ad5f6b"
+tgw_r2_id = "tgw-0f73085c984b6c176"
