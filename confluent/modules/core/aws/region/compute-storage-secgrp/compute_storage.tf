@@ -4,7 +4,7 @@ resource "aws_key_pair" "platform" {
   public_key = file(var.ssh_public_key_path)
 }
 
-data "aws_ami" "ubuntu_18" {
+data "aws_ami" "ubuntu_24" {
   most_recent = true
   owners      = ["099720109477"]
 
@@ -13,8 +13,20 @@ data "aws_ami" "ubuntu_18" {
     values = ["hvm"]
   }
 
-  name_regex = "^ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-.*"
+  name_regex = "^ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"
 }
+
+# data "aws_ami" "ubuntu_18" {
+#   most_recent = true
+#   owners      = ["099720109477"]
+
+#   filter {
+#     name   = "virtualization-type"
+#     values = ["hvm"]
+#   }
+
+#   name_regex = "^ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-.*"
+# }
 
 data "aws_ami" "ubuntu_20" {
 
@@ -45,33 +57,33 @@ data "aws_ami" "rhel_8" {
   name_regex = "^RHEL-8.*x86_64.*"
 }
 
-data "aws_ami" "rhel_7" {
-  most_recent = true
-  owners = ["309956199498"] # Red Hat
+# data "aws_ami" "rhel_7" {
+#   most_recent = true
+#   owners = ["309956199498"] # Red Hat
 
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
+#   filter {
+#     name   = "virtualization-type"
+#     values = ["hvm"]
+#   }
 
-  name_regex = "^RHEL-7.*x86_64.*"
-  # filter {
-  #   name   = "name"
-  #   values = ["RHEL-7*GA*Hourly*"]
-  # }
+#   name_regex = "^RHEL-7.*x86_64.*"
+#   # filter {
+#   #   name   = "name"
+#   #   values = ["RHEL-7*GA*Hourly*"]
+#   # }
 
-  # filter {
-  #   name   = "architecture"
-  #   values = ["x86_64"]
-  # }
+#   # filter {
+#   #   name   = "architecture"
+#   #   values = ["x86_64"]
+#   # }
 
-  # filter {
-  #   name   = "state"
-  #   values = ["available"]
-  # }
+#   # filter {
+#   #   name   = "state"
+#   #   values = ["available"]
+#   # }
 
   
-}
+# }
 
 # locals {
 #   ec2_ami_id = var.ec2_ami_type == "rhel" ? data.aws_ami.rhel_8.id : data.aws_ami.ubuntu_18.id
@@ -100,7 +112,7 @@ locals {
 
 resource "aws_instance" "component" {
   # ami = "${local.ec2_ami_id}"
-  ami = var.ec2_ami_type == "rhel" ? data.aws_ami.rhel_7.id : data.aws_ami.ubuntu_20.id
+  ami = var.ec2_ami_type == "rhel" ? data.aws_ami.rhel_8.id : data.aws_ami.ubuntu_24.id
 
   # count = var.ec2_instance_count
   for_each = local.service_instances_map
