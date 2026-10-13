@@ -15,7 +15,7 @@ module "aws_computer_storage_r1" {
   created_aws_public_subnets  = module.aws_network_vpc_r1.created_aws_public_subnets
   created_aws_private_subnets = module.aws_network_vpc_r1.created_aws_private_subnets
   created_aws_vpc_id          = module.aws_network_vpc_r1.created_aws_vpc_id
- aws_ipv4_cidr = var.aws_region_details_r1.cidr
+  aws_ipv4_cidr = var.aws_region_details_r1.cidr
   ec2_ami_type = "ubuntu"
   # ec2_ami_type = "rhel"
 
